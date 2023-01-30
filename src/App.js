@@ -3,24 +3,26 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
 import Error from "./pages/Error";
+import SharedLayout from "./pages/SharedLayout";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <nav>our navbar</nav> */}
+      <nav>our navbar</nav>
       <Routes>
-        <Route path="/" element={<Home />}>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />}></Route>
           <Route path="about" element={<About />} />
           <Route path="products" element={<Products />} />
           <Route path="*" element={<Error />} />
         </Route>
-        <Route path="/dashboard" element={<div>dashboard</div>}>
+        <Route path="/dashboard">
+          {/* <Route index element={<div>dashboard</div>} /> */}
           <Route path="stats" element={<div>stats!!</div>} />
-          <Route path="nope" element={<div>nope!!</div>} />
         </Route>
 
       </Routes>
-      {/* <footer>our footer</footer> */}
+      <footer>our footer</footer>
     </BrowserRouter >
   )
 }
